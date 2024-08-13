@@ -184,7 +184,7 @@ def model(tsv_file):
     metric = evaluate.load('seqeval')
     label_names=label_list
     early_stopping_callback = EarlyStoppingCallback(early_stopping_patience=30)
-    checkpoint_dir = os.path.join('/home/results_ner_big_bird', model_checkpoint.replace("/", "-"))
+    checkpoint_dir = os.path.join('./models/results_ner_big_bird', model_checkpoint.replace("/", "-"))
     os.makedirs(checkpoint_dir, exist_ok=True)
     model = AutoModelForTokenClassification.from_pretrained(
                                                     model_checkpoint,
@@ -219,7 +219,7 @@ def model(tsv_file):
     # Print the test results
     print(f"Test set results: {test_results}")
     # Add the method name to the results
-    method_name = "legal-bert-base-uncased"
+    #method_name = "legal-bert-base-uncased"
 
     # Create a DataFrame from the test results
     results_df = pd.DataFrame([test_results])
@@ -229,7 +229,7 @@ def model(tsv_file):
 
     # Save the DataFrame to a CSV file
     result_csv_name= model_checkpoint.replace("/", "_") + '_test_results.csv'
-    result_csv_name = './data/results_ner_big_bird/' + result_csv_name
+    result_csv_name = './models/results_ner_big_bird/' + result_csv_name
 
     results_df.to_csv(result_csv_name, index=False)
 
@@ -264,14 +264,7 @@ def model(tsv_file):
         # Ensure the lengths of losses and epochs are the same
 
 
-def eval():
-    checkpoint = "/content/nlpaueb/legal-bert-base-uncased/"
-    token_classifier = pipeline(
-        "token-classification", model=checkpoint, aggregation_strategy="simple"
-    )
-    sample_sentence = "Neutral Citation Number: [2020] EWHC 872 (Admin) Case No: CO/4505/2019 IN THE HIGH COURT OF JUSTICE QUEEN'S BENCH DIVISION PLANNING COURT IN BIRMINGHAM Birmingham Civil Justice Centre 33 Bull Street, Birmingham Date: 09/04/2020 Before: THE HONOURABLE MRS JUSTICE ANDREWS DBE Between: SOUTH DERBYSHIRE DISTRICT COUNCIL Claimant - and - SECRETARY OF STATE FOR HOUSING COMMUNITIES AND LOCAL GOVERNMENT -and- Defendant D COOPER CONSTRUCTION LTD Interested Party Timothy Jones (instructed by Geldards LLP) for the Claimant Killian Garvey (instructed by the Government Legal Department) for the Defendant Christian Hawley instructed by Howes Percival LLP for the Interested Party (written submissions only) Hearing dates: 31 May 2022 Approved Judgment Covid-19 Protocol: This judgment was handed down by the Judge remotely by circulation to the parties’ representatives by email and release to BAILII. The date and time for hand-down is deemed to be 10 am on Thursday 9th April 2020. The deemed hearing has been adjourned to enable the parties to make written submissions on any consequential matters by 4.30pm on Friday 17 April 2020 and for the order on judgment to be drawn up."
-    output=token_classifier(sample_sentence)
-    # Evaluate the model on the test dataset
+
 
 
 if __name__=="__main__":
