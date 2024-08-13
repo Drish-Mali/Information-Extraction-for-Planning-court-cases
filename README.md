@@ -11,6 +11,7 @@ python -m pip install -r requirements.txt
 ```
 ## Structure 
 
+\begin{verbatim}
 ├── README.md               # Project overview and instructions
 ├── LICENSE                 # License for the project
 ├── requirements.txt        # List of dependencies
@@ -27,3 +28,4 @@ python -m pip install -r requirements.txt
 │       ├── __init__.py
 │       └── helpers.py
 ├── models                  # Trained models or model checkpoints
+\end{verbatim}
