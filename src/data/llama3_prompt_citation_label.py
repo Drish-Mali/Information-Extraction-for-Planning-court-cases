@@ -56,7 +56,7 @@ def get_response():
     )
 
     # Stream the dataset for better memory management
-    df = pd.read_csv("/home/new_main_text.csv")
+    df = pd.read_csv("./data/new_main_text.csv")
 
     facts = []
     
@@ -169,4 +169,4 @@ def get_response():
 if __name__ == "__main__":
     response=get_response()
     # print(response.head())
-    response.to_csv("../../data/csv_files/citation_df.csv",index=False)
+    response.to_csv("./data/csv_files/citation_df.csv",index=False)
