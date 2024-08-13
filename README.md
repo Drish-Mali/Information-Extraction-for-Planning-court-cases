@@ -10,7 +10,7 @@ To install the required dependencies, run the following command:
 python -m pip install -r requirements.txt
 ```
 ## Structure 
-
+```
 ├── README.md               # Project overview and instructions
 ├── LICENSE                 # License for the project
 ├── requirements.txt        # List of dependencies
