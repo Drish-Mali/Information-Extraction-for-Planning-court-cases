@@ -131,7 +131,7 @@ def model(file_path):
     val_dataset = CustomDataset(val_texts, val_labels, tokenizer)
     test_dataset = CustomDataset(test_texts, test_labels, tokenizer)
     early_stopping_callback = EarlyStoppingCallback(early_stopping_patience=15)
-    checkpoint_dir = os.path.join('./data/multilabel_reannotation', model_checkpoint.replace("/", "-"))
+    checkpoint_dir = os.path.join('./models/multilabel_reannotation', model_checkpoint.replace("/", "-"))
     os.makedirs(checkpoint_dir, exist_ok=True)
 
     args = TrainingArguments(output_dir=checkpoint_dir,
@@ -167,7 +167,7 @@ def model(file_path):
 
     # Save the DataFrame to a CSV file
     result_csv_name= model_checkpoint.replace("/", "_") + '_test_results.csv'
-    result_csv_name = './data/multilabel_reannotation/' + result_csv_name
+    result_csv_name = './models/multilabel_reannotation/' + result_csv_name
 
     results_df.to_csv(result_csv_name, index=False)
 
